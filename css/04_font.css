@@ -1,0 +1,47 @@
+
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap');
+
+
+.sentences {
+    font-weight: 300;
+
+    text-align: center;
+/* 
+    text-decoration: line-through;
+    text-decoration: underline;
+
+*/
+
+    line-height: 2;
+
+    font-family: 'Gugi', cursive;
+ }
+
+ a {
+    text-decoration: none;
+    color: black;
+ }
+
+ .font-import {
+    font-family: 'East Sea Dokdo', cursive;
+ }
+
+ .noonnu_font {
+    font-family: 'Single Day', 'East Sea Dokdo', cursive;
+ }
+
+ #font_1 {
+    font-family: 'Black And White Picture', 'TAEBAEKmilkyway', cursive;
+ }
+
+ #font_2 {
+    font-family: 'Black And White Picture', sans-serif;
+}

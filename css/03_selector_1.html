@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자1 : 기본 선택자</title>
+    <style>
+        /* 전체 선택자 */
+        * {
+            color: grey;
+            background-color: #fff;
+        }
+
+        /* 태그 선택자 */
+        li {
+            background-color: aqua;
+            color: blue;
+        }
+
+
+        h3 {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 10px;
+        }
+
+        /* 클래스 선택자 */
+
+        .small {
+            background-color: pink;
+        }
+
+        .big {
+            background-color: orange;
+        }
+
+        
+
+        /* 아이디 선택자 */
+        #test {
+            background-color: skyblue;
+        }
+
+        /* 
+        선택자 우선순위
+
+        전체 < 태그 < 클래스 < 아이디
+         */
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="small">쥐</li>
+        <li class="big">소</li>
+        <li class="big">호랑이</li>
+        <li class="small">토끼</li>
+    </ul>
+
+    <h3>어흥어흥</h3>
+    <p id="test" class="test1">p tag</p>
+
+    
+</body>
+</html>

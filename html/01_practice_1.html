@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>효리카페 메뉴판</title>
+</head>
+<body>
+    <h1>효리카페</h1>
+    <ul type="circle">
+        <li>
+            <!-- li태그 안에 제목태그와 또다른 리스트 태그(ol, ul)를 넣을 수 있다. -->
+            <h2>고구마라떼</h2>
+            <ol>
+                <li>R : 3000원</li>
+                <li>L : 3500원</li>
+            </ol>
+        </li>        
+        <li>
+            <h2>아메리카노</h2>
+            <ol>
+                <li>R : 3500원</li>
+                <li>L : 4000원</li>
+            </ol>
+        </li>        
+        <li>
+            <h2>레몬에이드</h2>
+            <ol>
+                <li>R : 5000원</li>
+                <li>L : 6000원</li>
+            </ol>
+        </li>              
+    </ul>
+    <hr>
+    <h2>음료설명</h2>
+    <p>고구마라떼 : <i>해남 꿀고구마</i>를 갈아 넣은 <del>고구마라떼</del></p>
+    <p>아메리카노 : <b>심플</b> is <b>베스트</b> ! 누구나 좋아하는 아메리카노</p>
+    <p>레몬에이드 : <u>유기농 레몬으로 직접 담군 레몬청</u>을 넣은 레몬에이드 !</p>
+
+    <hr>
+    <hr>
+    <h1>img & a태그</h1>
+    <!-- 
+        img태그 속성
+        - src(필수)
+        - alt(선택 - 항상 써주세요!)
+            사진 주소나 링크가 잘 못 되서 안 나올 경우 띄워주는 문구
+        - height, width
+            둘 중에 하나만 쓰면 원본 비율 유지
+     -->
+    <img src="data:image/jpeg;base64,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" alt="티스토리 로고 사진" width="200">
+    <br>
+    <!-- 
+        상대경로  : 현재 위치 ./
+                    조상의 위치 ../
+        절대경로 
+        
+        협업하거나 할 때는 상대적인 위치로 하기 !!!!!!!!!
+     -->
+    <img src="./omori.jpg" alt="오모리 김치찌개라면 사진" width="200">
+    
+    <br>
+    <img src="C:\Codingon\html\omori.jpg" alt="오모리 김치찌개라면 사진" width="200">
+    <br>
+    <a href="http://www.naver.com" target="blank">네이버</a>
+    <br>
+    <a href="http://www.naver.com" title="마우스 커서를 올리면 나타는 문장">네이버</a>
+    <br>
+     <a href="./01_tag.html" target="_blank">첫번째 html로 이동</a>
+    <br>
+    <a href="https://gyf-tistory.tistory.com/" target="_blank" title="티스토리 블로그"><img src="./tistory.jpg" alt="티스토리 로고" width="200"></a>
+</body>
+</html>

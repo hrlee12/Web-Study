@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ball {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, yellow, orange, red);
+            box-shadow: 5px 10px 10px inset yellowgreen;
+            /* box-shadow: x축 y축 흐려지는 거  그림자방향*/
+            border-radius: 50%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* animation: ball1 10s linear infinite; */
+            animation-name: ball1;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinity;
+        }
+        @keyframes ball {
+            0%{
+                transform: translate(0,0);
+            }
+            25%{
+                transform: translate(calc(100vw - 100px), 0);
+            }
+
+            50%{
+                transform: translate(calc(100vw - 100px), calc(100vh - 100px));
+            }
+            75%{
+                transform: translate(0, calc(100vh - 100px));
+            }
+            100%{
+                transform: translate(0, 0);
+            }
+        }
+        @keyframes ball1 {
+            0% {
+                top: 0px;
+                left: 0px;
+            }
+
+            25% {
+                top: 0px;
+                left: calc(100vw - 100px);
+            }
+
+            50% {
+                left: calc(100vw - 100px);
+                top: calc(100vw - 100px);
+            }
+
+            75% {
+                left: 0px;
+                top: calc(100vw - 100px);
+            }
+
+            100% {
+                top: 0px;
+                left: 0px;
+            } 
+        }
+
+        .ball1 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            right: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+    <div class="ball1"></div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상선택자</title>
+    <style>
+        .div1 {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .div1:hover {
+            background-color: pink;
+            height: 150px;
+            cursor: pointer;
+        }
+
+        .div1:active {
+            background-color: brown;
+            width: 150px;
+        }
+
+        input:focus {
+            background-color: blueviolet;
+            color: white;
+            outline-color: aqua;
+        }
+        
+        .links>a {
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
+        }
+        
+        .links>a:hover {
+            background-color: coral;
+        }
+
+        .links>a:visited {
+            color: #ccc;
+        }
+        /* 
+        요소의 상황에 따른 가상선택자
+        1. E:first-child {} E가 첫번째 자식이라면 선택
+        2. E:last-child{} E가 마지막 자식이라면 선택
+        3. E:nth-child(n) {} E가 n번째 자식이라면 선택
+        4. E:not(XYZ) {} XYZ가 아닌 자식 E 선택 
+        5.
+        */
+
+        .zoo>* {
+            background-color: green;
+            color: #fff;
+        }
+
+        .zoo > li:last-child {
+            background-color: black;
+        }
+
+        .zoo > h1:first-child {
+            background-color: pink;
+        }
+        /* 전체선택자보다 태그선택자가 우선순위가 높으므로 강아지 제외 */
+        .zoo> *:not(div) {
+            background-color: yellow;
+        }
+
+        .zoo *:nth-child(2n) {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="div1">
+        <span>div1</span>
+    </div>
+
+    <input type="text"/>
+    <div class="links">
+        <a href="https://www.naver.com">네이버</a>
+        <a href="https://www.google.com">구글</a>
+    </div>
+    -->
+    <ul class="zoo">
+        <h1>동물원 입니다.</h1>
+        <div>원숭이</div>
+        <li>사자</li>
+        <li>토끼</li>
+        <li>호랑이</li>
+        <li>코끼리</li>
+        <div>코알라</div>
+        <li>강아지</li>
+    </ul>
+</body>
+</html>

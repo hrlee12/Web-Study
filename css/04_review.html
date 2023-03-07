@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'TAEBAEKmilkyway';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }       
+
+        .font {
+            font-weight: bold;
+            /* 부모 요소에 크기에 비례한 단위. 1em은 1배 */
+            font-size: 1em;
+            /* html(루트)에 지정된 글자크기(기본 16px)에 비례. 1rem은 1배 */
+            font-size: 1rem;
+            /* 글자 크기의 배수 or px, em, rem 
+                2로 하면 세로방향에서 중간정렬이 된다. 
+            */
+            line-height: 2;
+
+            /* 
+            글꼴 적용하기
+            글꼴을 웹에서 인클루드하고 css속성 font-family로 설정해준다. 
+            나열된 순서대로 시도하고 마지막은 글꼴계열로 해서 무조건 폰트가 적용되게 한다. 
+             */
+
+             font-family: 'TAEBAEKmilkyway', cursive;
+        }
+    </style>
+</head>
+<body>
+    <h2>CSS 폰트 속성</h2>
+    <div class="font">안녕하세요!</div>
+</body>
+</html>

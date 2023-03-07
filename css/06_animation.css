@@ -1,0 +1,105 @@
+/* 
+transition vs animation
+
+transition
+    - 전환될 "스타일"을 지정
+    - hover, active, onclick 등 이벤트에 적용
+
+animation
+    - 중간 step지정 가능 : 보다 세밀한 스타일 전환 가능
+    - 정지, 반복, 시작, 동작 가능
+    - @keyframes로 이루어짐. 
+
+*/
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: cadetblue;
+    position: relative;
+
+    animation-name: my-ani;
+    animation-duration: 2s;
+    animation-iteration-count: 2.5;
+
+    animation-delay: 2s;
+    animation-timing-function: ease;
+}
+
+@keyframes my-ani {
+0% {
+    left: 0px;
+}
+
+25% {
+    left: 200px;
+}
+
+50% {
+    left: 400px;
+}
+
+75% {
+    left: 200px;
+}
+
+100%{
+    left: 0px;
+}
+}
+.bounce-ball1 {
+    position: relative;
+    left: 100px;
+    top: 0;
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #000;
+    animation-name: bounce1;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes bounce1 {
+    to {
+        top: 0;
+    }
+
+    from {
+        top: 300px;
+    }
+}
+
+
+.bounce-ball2 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: tomato;
+    position: absolute;
+    animation: bounce2 2s linear  infinite;
+}
+
+@keyframes bounce2 {
+    from, to {
+        bottom: 0;
+
+    }
+
+    50% {
+        bottom: 300px;
+    }
+}
+
+.bounce-ball3 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: linear-gradient(45deg, white, brown);
+    position: relative;
+    top: 500px;
+    left: 500px;
+}

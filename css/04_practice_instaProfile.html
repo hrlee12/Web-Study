@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인스타그램 프로필 만들기</title>
+    <style>
+        .container {
+            position: fixed;
+            top: 100px;
+            left: 200px;
+            background: linear-gradient(45deg, yellow, rgb(204, 0, 204));
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+
+        .container>.inner-circle {
+            width: 270px;
+            height: 270px;
+            border: 7px solid white;
+            border-radius: 50%;
+            position: absolute;
+            background-color: white;
+            background-image: url("../img/pooh.png");
+            background-size: 295px 295px;
+            background-position: -10px -17px;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            left: 0px;
+            margin: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inner-circle"></div>
+    </div>
+</body>
+</html>

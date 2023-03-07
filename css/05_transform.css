@@ -1,0 +1,76 @@
+.img-box {
+    width: 400px;
+    height: 250px;
+    background-color: blueviolet;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+img:hover {
+    transform: translate(100px, 100px);
+    transform: translate(100px, 0px);
+    transform: translateX(100px);
+    transform: translateY(-100px);
+    transform: perspective(500px) translateZ(100px);
+    transform: perspective(500px) translate3d(0, 100px, 100px);
+    
+    /* 
+    scale크리
+    인자로 단위없는 수(배수)
+    0~1은 축소
+    1보다 크면 확대
+     */
+    transform: scale(1, 2);
+    transform: scaleX(0.5);
+
+    /* skew() 기울이기 */
+    transform: skewX(45deg);
+    transform: skewY(45deg);
+    transform: skew(45deg, 30deg);
+
+    /* rotate() 회전 */
+    transform: rotate(90deg);
+    transform: perspective(200px) rotateX(-45deg);
+    transform: perspective(200px) rotateY(180deg);
+    backface-visibility: visible;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-color: black;
+    transition: 1s 2s;
+}
+
+.box1:hover{
+    background-color: pink;
+    width: 120px;
+    height: 120px;
+    /* transition
+    transition duration 필수!!! 나머지는 안 써도 됨
+    */
+
+    transition-duration: 3s;
+    transition-timing-function: linear;
+    transition-delay: 1s;
+}
+
+.box2:hover{
+    transform: translateX(50px) scaleX(2);
+    height: 120px;
+    
+    transition: height .5s ease 2s;
+}
+
+
+.box3:hover{
+    opacity: 0;
+}
+
+
