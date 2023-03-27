@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('./includes/header') %>
+    <h1>안녕하세요!!!</h1>
+    <% for (let i=0; i<5; i++){%>
+    <div>안녕하세요...</div>
+    <div>hi<%=i%></div>
+    <img src="/static/pooh.png" />
+    <%}%>
+
+    <!-- / 루트에서 login -->
+    <a href="/login">로그인</a>
+  </body>
+</html>
