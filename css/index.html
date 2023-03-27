@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상요소 선택자와 속성 선택자</title>
+    <style>
+        .div {
+            background-color: pink;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* content 속성 값은 글씨로 넣고 출력됨. 
+        만약 글씨를 안 넣더라도 content속성은 입력하고 속성값을 비워둠.  */
+        /* .div::after {
+            content: "뒤!";
+            color: white;
+        } */
+
+        .div:hover::after {
+            content: "뒤!";
+            background-color: red;
+            color: white;
+            display: inline-block;
+            width: 2px;
+            height: 20px;
+        }
+
+     
+
+        [class="square"] {
+            width: 50px;
+            height: 50px;
+            background-color: crimson;
+            border: 1px solid black;
+        }
+        /* 속성선택자와 클래스 선택자 우선순위 똑같음.  */
+        .square {
+            background-color: antiquewhite;
+        }
+
+        [disabled] {
+            background-color: red;
+        }
+
+        [placeholder="이름"] {
+            background-color: orange;
+        } 
+        /* 
+        가상클래스 선택자 ABC:not()의 조건을 속성으로도 지정가능하다 !!!!!!!!
+        css에서 속성을 뜻하는 []안에다 적기 !
+        */
+        input:not([placeholder]) {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="div">여기요!</div>
+    <input type="text" placeholder="이름" />
+    <br />
+    <input type="password" value="pw"/>
+    <br />
+    <input type="text" value="000-0000-0000">
+    <br />
+    <input type="text" placeholder="핸드폰" />
+    <br />
+    <input type="text" placeholder="주민번호" disabled />
+
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+
+
+</body>
+</html>

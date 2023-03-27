@@ -1,0 +1,92 @@
+/* div {
+  background-color: black;
+  width: 100%;
+  height: 100px;
+} */
+
+/* 이 조건에서 바꾸고 싶은 것만 지정해주면 됨 */
+/* 겹치는 부분이 있다면 밑에 나오는게 적용된다.  
+    조건이 포함관계에 있으면 조건이 더 좁은 걸 밑에 둔다 !!!! 
+max-width, min-width 혼용 XX 혼란스럽게 됨. min vs max 기준을 하나 정하고 시작하자. 
+
+    */
+
+/* @media screen and (max-width: 768px) {
+  div {
+    background-color: yellow;
+  }
+}
+
+@media screen and (max-width: 576px) {
+   최소 너비 576px -> 576px 이상에서 
+  div {
+    background-color: red;
+  }
+}
+ */
+/* orientation: landscape  가로모드 - 가로가 세로보다 긴 경우 */
+/* @media screen and (orientation: landscape) {
+  div {
+    background-color: red;
+  }
+} */
+/* orientation: portrait  세로모드 - 세로가 가로보다 긴 경우 */
+/* @media screen and (orientation: portrait) {
+  div {
+    background-color: green;
+  }
+}
+@media print {
+  div {
+    background-color: green;
+  }
+} */
+
+.box {
+  display: flex;
+}
+
+.box > div {
+  margin: 20px;
+  background-color: green;
+  color: white;
+  font-size: 50px;
+}
+
+@media screen and (max-width: 800px) {
+  .box {
+    display: block;
+    font-size: 20px;
+  }
+}
+
+.container {
+  display: flex;
+}
+
+.container > div {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  border-color: grey;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    display: block;
+  }
+  .container > div {
+    background-color: aqua;
+  }
+}
+
+:root {
+  --main-color: orange;
+  --main-g-color: navy;
+}
+
+div {
+  background-color: var(--main-color);
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/2a25cfa231.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0px;
+      }
+      nav {
+        width: 100vw;
+        height: 75px;
+        display: flex;
+        background-color: purple;
+        justify-content: space-between;
+      }
+
+      .logo,
+      .menu {
+        color: white;
+        line-height: 75px;
+      }
+
+      .logo {
+        font-size: 32px;
+      }
+      .menu {
+        margin: 0px 10px;
+      }
+      .menu > .items {
+        display: flex;
+      }
+      .menu li {
+        margin: 0px 10px;
+      }
+      .menu > .menu-bar {
+        display: none;
+      }
+
+      @media screen and (max-width: 992px) {
+        .menu > .menu-bar {
+          display: inline-block;
+        }
+        .nav {
+          position: relative;
+        }
+
+        .menu > .items {
+          position: absolute;
+          top: 75px;
+          left: 0px;
+          display: block;
+          background-color: plum;
+          color: black;
+          width: 100vw;
+        }
+
+        .menu > .items > li {
+          color: black;
+          height: 50px;
+          line-height: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">LOGO</div>
+        <div class="menu">
+          <div class="menu-bar"><i class="fa-solid fa-bars"></i></div>
+          <ul class="items" type="none">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <li>메뉴4</li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main></main>
+    <footer></footer>
+  </body>
+</html>

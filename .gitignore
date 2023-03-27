@@ -1,2 +1,7 @@
 강의자료/
 *.pdf
+
+
+express/
+# express/node_modules/
+# package-lock.json
