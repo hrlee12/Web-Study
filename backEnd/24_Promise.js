@@ -167,11 +167,11 @@ function sub(n) {
 add(4, 3)
   .then(function (result) {
     console.log("1: ", result);
-    return mul(result);
+    mul(result);
   })
   .then(function (result) {
     console.log("2: ", result);
-    return sub(result);
+    sub(result);
   })
   .then(function (result) {
     console.log("3 :", result);
