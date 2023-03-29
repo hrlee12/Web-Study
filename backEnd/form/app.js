@@ -23,16 +23,32 @@ app.get("/", function (req, res) {
   res.render("index", { title: myTitle });
 });
 
+/* app.get("/getForm", function (req, res) {
+  res.render("test");
+});
+
+app.get("/test", function (req, res) {
+  res.render("test");
+});
+ */
 app.get("/getForm", function (req, res) {
   // form으로 submit 하면 request 객체가 서버로 감.
   // request 객체의 query는 입력한 값
   console.log(req.query);
-  res.send("get 요청 성공!!!");
+  // res.send("get 요청 성공!!!");
+  res.render("result", {
+    title: "GET요청 폼 결과 확인하기",
+    userInf: req.query,
+  });
 });
 
 app.post("/postForm", function (req, res) {
   console.log(req.body);
-  res.send("post 요청 성공!!");
+  // res.send("post 요청 성공!!");
+  res.render("result", {
+    title: "POST 요청 폼 결과 확인하기",
+    userInf: req.body,
+  });
 });
 
 app.listen(PORT, function () {
