@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- axios 사용을 위한 cdn 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      .id-inf {
+        font-size: 0.8rem;
+        color: grey;
+      }
+
+      .success {
+        color: blue;
+        font-weight: 700;
+      }
+
+      .require-data {
+        color: black;
+        font-weight: normal;
+      }
+
+      .error {
+        color: red;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>동적 폼 실습</h1>
+    <hr />
+    <h2>실습1. axios get 회원가입</h2>
+    <form name="register">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" />
+      <br />
+      <br />
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" id="male" name="gender" value="남자" checked />
+        <label for="male">남자</label>
+        <input type="radio" id="female" name="gender" value="여자" />
+        <label for="female">여자</label>
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="year" id="year">
+          <%for (let i=0; i<50; i++){%>
+          <option value="<%=2010 -i%>"><%=2010 - i%></option>
+          <%} %>
+        </select>
+        <label for="year">년</label>
+        <select name="month" id="month">
+          <%for (let i=0; i<12; i++){%>
+          <option value="<%=i+1%>"><%=i+1%></option>
+          <%} %>
+        </select>
+        <label for="month">월</label>
+        <select name="date" id="date">
+          <%for (let i=0; i<31; i++){%>
+          <option value="<%=i+1%>"><%=i+1%></option>
+          <%} %>
+        </select>
+        <label for="date">일</label>
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>관심사</legend>
+        <input
+          type="checkbox"
+          id="travel"
+          name="interest"
+          value="여행"
+          checked
+        />
+        <label for="travel">여행</label>
+        <input type="checkbox" id="fashion" name="interest" value="패션" />
+        <label for="fashion">패션</label>
+        <input type="checkbox" id="food" name="interest" value="음식" />
+        <label for="food">음식</label>
+      </fieldset>
+      <br />
+
+      <button type="button" onclick="axiosGet()">회원가입</button>
+    </form>
+    <div id="resultBox1"></div>
+
+    <hr />
+    <h2>실습2. axios post 로그인</h2>
+    <div class="id-inf">id는 banana, 비밀번호는 4321입니다.</div>
+    <br />
+    <form name="login">
+      <label for="id">아이디</label>
+      <input type="text" id="id" name="id" />
+      <label for="pw">비밀번호</label>
+      <input type="password" id="pw" name="pw" />
+      <button type="button" onclick="axiosPost()">로그인</button>
+    </form>
+    <div id="resultBox2"></div>
+    <script>
+      function axiosGet() {
+        let resultBox = document.querySelector("#resultBox1");
+
+        const form = document.forms["register"];
+        const userInf = {
+          name: form.name.value,
+          gender: form.gender.value,
+          year: form.year.value,
+          month: form.month.value,
+          date: form.date.value,
+          interest: form.interest.value,
+        };
+
+        axios({
+          url: "/register",
+          method: "GET",
+          params: userInf,
+        }).then(function (response) {
+          console.log(response.data);
+          if (response.data.name) {
+            resultBox1.textContent = `${response.data.name}님 환영합니다! 가입이 완료되었습니다.🎉`;
+            resultBox1.classList.remove("require-data");
+            resultBox1.classList.add("success");
+          } else {
+            resultBox1.textContent = "이름은 필수 값입니다!";
+            resultBox1.classList.remove("success");
+            resultBox1.classList.add("require-data");
+          }
+        });
+      }
+
+      function axiosPost() {
+        let resultBox = document.querySelector("#resultBox2");
+        const form = document.forms["login"];
+        const userInf = {
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+
+        axios({
+          url: "/login",
+          method: "POST",
+          data: userInf,
+        }).then(function (response) {
+          console.log(response.data);
+          let data = response.data;
+          if ((data.id === data.body.id) & (data.pw === data.body.pw)) {
+            resultBox.classList.remove("error");
+            resultBox.classList.remove("require-data");
+            resultBox.classList.add("success");
+
+            resultBox.textContent = `${response.data.body.id}님! 로그인 성공😁`;
+          } else if (Boolean(data.body.id) & Boolean(data.body.pw)) {
+            resultBox.classList.remove("success");
+            resultBox.classList.remove("require-data");
+            resultBox.classList.add("error");
+            resultBox.textContent = "아이디 또는 패스워드 오류😥";
+          } else {
+            resultBox.classList.remove("success");
+            resultBox.classList.remove("error");
+            resultBox.classList.add("require-data");
+
+            resultBox.textContent = "아이디와 비밀번호는 필수 값입니다.";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
