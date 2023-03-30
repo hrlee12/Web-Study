@@ -9,10 +9,16 @@
   <body>
     <h1>실습1 폼 전송 완료</h1>
     <ul>
+      <%if (userInf.name) { %>
       <li>이름 : <%=userInf.name%></li>
+      <%}%> <%if (userInf.sex) { %>
       <li>성별 : <%=userInf.sex%></li>
+      <%}%> <%if (userInf.year | userInf.month | userInf.date){ %>
       <li>생일 : <%=`${userInf.year}-${userInf.month}-${userInf.date}`%></li>
+      <%}%> <%if (userInf.interest) { %>
+
       <li>취미 : <%=userInf.interest%></li>
+      <%}%>
     </ul>
     <br />
     <br />

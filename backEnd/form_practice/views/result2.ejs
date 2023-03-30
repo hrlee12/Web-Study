@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      div {
+        display: inline-block;
+        width: 50px;
+        border-radius: 10px;
+        position: relative;
+        top: 2px;
+      }
+    </style>
   </head>
   <body>
     <h1>실습2 폼 전송 완료!</h1>
@@ -12,14 +21,16 @@
       <li>이름 : <%=userInf.name%></li>
       <li>성별 : <%=userInf.sex%></li>
       <li>생일 : <%=`${userInf.month}-${userInf.month}-${userInf.date}`%></li>
+      <% if (userInf.interest) { %>
       <li>취미 : <%=userInf.interest%></li>
+      <% } %> <% if (userInf.color) { %>
       <li>
         좋아하는 색상 :
-        <span
-          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
-        >
+        <div>&nbsp;</div>
       </li>
+      <% } %> <% if (userInf.number) { %>
       <li>좋아하는 숫자 : <%=userInf.number%></li>
+      <% } %>
     </ul>
 
     <br />
@@ -28,7 +39,7 @@
 
     <script>
       document.querySelector(
-        "span"
+        "div"
       ).style = `background-color : ${"<%= userInf.color %>"};`;
     </script>
   </body>

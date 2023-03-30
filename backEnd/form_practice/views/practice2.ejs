@@ -25,8 +25,8 @@
       <fieldset>
         <legend>생년월일</legend>
         <select name="year" id="year">
-          <% for (let i=2010; i>1960; i--){ %>
-          <option value="<%=i%>"><%=i%></option>
+          <% for (let i=0; i<50; i++){ %>
+          <option value="<%=2010-i%>"><%=2010-i%></option>
           <% } %>
         </select>
         <label for="year">년</label>
