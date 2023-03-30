@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>실습2 폼 전송 완료!</h1>
+    <ul>
+      <li>이름 : <%=userInf.name%></li>
+      <li>성별 : <%=userInf.sex%></li>
+      <li>생일 : <%=`${userInf.month}-${userInf.month}-${userInf.date}`%></li>
+      <li>취미 : <%=userInf.interest%></li>
+      <li>
+        좋아하는 색상 :
+        <span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+        >
+      </li>
+      <li>좋아하는 숫자 : <%=userInf.number%></li>
+    </ul>
+
+    <br />
+    <br />
+    <a href="/">홈으로 이동</a>
+
+    <script>
+      document.querySelector(
+        "span"
+      ).style = `background-color : ${"<%= userInf.color %>"};`;
+    </script>
+  </body>
+</html>
