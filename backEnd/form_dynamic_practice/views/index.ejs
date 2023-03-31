@@ -148,13 +148,13 @@
         }).then(function (response) {
           console.log(response.data);
           let data = response.data;
-          if ((data.id === data.body.id) & (data.pw === data.body.pw)) {
+          if (data.id === data.body.id && data.pw === data.body.pw) {
             resultBox.classList.remove("error");
             resultBox.classList.remove("require-data");
             resultBox.classList.add("success");
 
             resultBox.textContent = `${response.data.body.id}님! 로그인 성공😁`;
-          } else if (Boolean(data.body.id) & Boolean(data.body.pw)) {
+          } else if (data.body.id && data.body.pw) {
             resultBox.classList.remove("success");
             resultBox.classList.remove("require-data");
             resultBox.classList.add("error");

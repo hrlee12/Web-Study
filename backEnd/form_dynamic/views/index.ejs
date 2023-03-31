@@ -38,6 +38,10 @@
       <br />
       <button type="button" onclick="axiosGet()">axios get 버튼</button>
       <button type="button" onclick="axiosPost()">axios post 버튼</button>
+
+      <br />
+      <button type="button" onclick="fetchGet()">fetch get 버튼</button>
+      <button type="button" onclick="fetchPost()">fetch post 버튼</button>
     </form>
 
     <div class="result"></div>
@@ -156,6 +160,54 @@
             resultBox.textContent = `Error! ${error}`;
             resultBox.style.color = "blue";
           });
+      }
+
+      function fetchGet() {
+        console.log("connected?");
+
+        const form = document.forms["register"];
+        const urlQuery = `?name=${form.name.value}&gender=${form.gender.value}`;
+
+        fetch(`/fetch${urlQuery}`, {
+          method: "GET",
+        })
+          .then(function (response) {
+            console.log(response);
+            // console.log(JSON.parse(response));
+            // json 형식으로 도착하는 응답 -> js object로 파싱
+            // .json()은 fetch의 함수인데 json->object로 바꿔서 프로미스 객체 반환
+            return response.json();
+          })
+          .then(function (data) {
+            console.log("data >>>>", data);
+          });
+      }
+
+      function fetchPost() {
+        console.log("click fetchPost btn!!!");
+
+        const form = document.forms["register"];
+        const formInfo = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+
+        // fetch(url, options)
+        fetch("/fetch", {
+          method: "POST",
+          // POST 전송시에는 headers 옵션을 통해서 JSON 포맷을 사용함을 알려줘야 함.
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // JSON.stringify() : js object -> json
+          body: JSON.stringify(formInfo), // 폼 요소에 입력된 값 정보
+        }).then(function (response) {
+          console.log(response);
+          console.log(response.json());
+        });
+        // .then(function (data) {
+        //   console.log(data);
+        // });
       }
     </script>
   </body>
