@@ -10,20 +10,36 @@ const upload = multer({
   dest: "uploads/",
 });
 
+const uploadDetail = multer({
+  storage: multer.diskStorage({
+    destination(req, file, done) {
+      done(null, "uploads/");
+    },
+    filename(req, file, done) {
+      const ext = path.extname(file.originalname);
+      // done(null, path.basename(file.originalname, ext));
+      // [유저아이디값 + 현재시간.확장자] 형식
+      done(null, req.body.userid + Date.now() + ext);
+    },
+  }),
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
+
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/uploads", express.static(__dirname + "/uploads"));
-
+app.use("/static", express.static(__dirname + "/static"));
 app.get("/", function (req, res) {
   res.render("index");
 });
 
 // single() : 하나의 파일 업로드할 때
 // single()의 매개변수 : input의 name과 일치시키기 !
-app.post("/upload", upload.single("userfile"), (req, res) => {
+app.post("/result", uploadDetail.single("profile"), (req, res) => {
   console.log(req.file); // 업로드한 파일 정보는 req.file에
+  console.log(req.file.paht);
   /*   {
     fieldname: 'userfile',      // 폼에 정의한 name
     originalname: 'peach.jpg',  // 사용자가 업로드한 파일명
@@ -38,7 +54,15 @@ app.post("/upload", upload.single("userfile"), (req, res) => {
   /* 
   { title: '' }     // name이 title인 요소에 입력한 값
   */
-  res.send("upload 완료~!!");
+  res.render("result", {
+    userInfo: req.body,
+    src: req.file.path,
+  });
+});
+
+app.post("/dynamicFile", uploadDetail.single("dynamic-file"), (req, res) => {
+  console.log(req.file);
+  res.send(req.file);
 });
 
 app.listen(PORT, function () {

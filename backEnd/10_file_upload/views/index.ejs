@@ -5,13 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      .profile {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        box-shadow: 0 0 20px #0002;
+      }
+    </style>
   </head>
   <body>
-    <h1>파일 업로드 배워보자!</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <input type="file" name="userfile" /><br />
-      <input type="text" name="title" /><br /><br />
-      <button type="submit">업로드</button>
+    <!--     <h1>회원가입 폼</h1>
+
+    <form action="/result" method="POST" enctype="multipart/form-data">
+      <input type="text" name="userid" placeholder="아이디" /><br />
+      <input type="password" name="password" placeholder="비밀번호" /><br />
+      <input type="text" name="username" placeholder="이름" /><br />
+      <input type="number" name="age" placeholder="나이" /><br />
+      <input type="file" name="profile" /><br /><br />
+      <button type="submit">회원가입</button>
     </form>
+
+ -->
+    <h2>동적 파일 업로드</h2>
+    <input type="file" name="dynamic-file" id="dynamic-file" /><br />
+    <button type="button" onclick="fileUpload()">업로드</button><br />
+    <img src="" width="200" />
+
+    <script>
+      function fileUpload() {
+        // FormData : form태그의 데이터를 동적으로 제어할 수 있는 기능
+        // 보통 axios, ajax와 함께 사용함.
+        // 페이지 전환 없이 '현재 페이지'에서 동적으로 파일 업로드할 때 사용함.
+        const formData = new FormData();
+        const file = document.getElementById("dynamic-file");
+        console.log(file);
+        console.log(file.files);
+        console.log(file.files[0]);
+        // formData.append(key, value)
+        // input의 name 값이 'dynamic-userfile'인 요소에 fileInput.files[0] 데이터가 입력되었음.
+        formData.append("dynamic-file", file.files[0]);
+
+        axios({
+          method: "POST",
+          url: "/dynamicFile",
+          data: formData,
+          headers: {
+            "Content-Type": "multipart/form-data", //enctype="multipart/form-data"
+          },
+        }).then(function (response) {
+          console.log(response);
+          console.log(response.data);
+          console.log(response.data.path);
+          let imgElem = document.querySelector("img");
+          imgElem.src = response.data.path;
+          imgElem.classList.add("profile");
+        });
+      }
+    </script>
   </body>
 </html>
