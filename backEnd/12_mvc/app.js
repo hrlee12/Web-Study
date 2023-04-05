@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = 8000;
+const PORT = 8080;
 
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
@@ -14,10 +14,10 @@ const indexRouter = require("./routes");
 
 // 모든 라우터는 /로 시작함.
 // 즉, '/~~' 모든 라우터를 indexRouter에 정의했으니
-// 거길 보면 됨 !!
+// 거길 보면 된다는 의미 !!
 app.use("/", indexRouter);
 
-// app.use로 여러개 라우트 할 거임.
+// app.use로 여러개 라우트 설정할 거임.
 // *는 app.js 마지막에 넣기.
 // [404 error]
 // 맨 마지막 라우트로 선언: nor 나머지 코드 무시되기 때문!!

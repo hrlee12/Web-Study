@@ -12,6 +12,7 @@ exports.main = (req, res) => {
 };
 
 exports.comments = (req, res) => {
+  console.log(Comment);
   console.log(Comment.getComments()); // 댓글 목록이 [ {}, {}, {}, {} ] 형태로 출력
   res.render("comments", { commentInfos: Comment.getComments() });
 };

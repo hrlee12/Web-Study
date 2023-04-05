@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- axios 사용을 위한 cdn 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      .id-inf {
+        font-size: 0.8rem;
+        color: grey;
+      }
+
+      .success {
+        color: blue;
+        font-weight: 700;
+      }
+
+      .require-data {
+        color: black;
+        font-weight: normal;
+      }
+
+      .error {
+        color: red;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>실습 MVC패턴</h2>
+    <div class="id-inf">id는 banana, 비밀번호는 4321입니다.</div>
+    <br />
+    <form name="login">
+      <label for="id">아이디</label>
+      <input type="text" id="id" name="id" />
+      <label for="pw">비밀번호</label>
+      <input type="password" id="pw" name="pw" />
+      <button type="button" onclick="axiosPost()">로그인</button>
+    </form>
+    <div id="resultBox2"></div>
+    <script>
+      function axiosPost() {
+        let resultBox = document.querySelector("#resultBox2");
+        const form = document.forms["login"];
+        const userInf = {
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+
+        axios({
+          url: "/login",
+          method: "POST",
+          data: userInf,
+        }).then(function (response) {
+          console.log(response.data);
+          let data = response.data;
+
+          if (data.success) {
+            resultBox.classList.remove("error");
+            resultBox.classList.remove("require-data");
+            resultBox.classList.add("success");
+            console.log(data);
+            resultBox.textContent = `${data.userName}님! 로그인 성공😁`;
+          } else if (data.existData) {
+            resultBox.classList.remove("success");
+            resultBox.classList.remove("require-data");
+            resultBox.classList.add("error");
+            resultBox.textContent = "아이디 또는 패스워드 오류😥";
+          } else {
+            resultBox.classList.remove("success");
+            resultBox.classList.remove("error");
+            resultBox.classList.add("require-data");
+
+            resultBox.textContent = "아이디와 비밀번호는 필수 값입니다.";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
