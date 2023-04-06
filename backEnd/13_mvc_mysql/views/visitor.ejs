@@ -36,8 +36,22 @@
           <td><%= data[i].id %></td>
           <td><%= data[i].name %></td>
           <td><%= data[i].comment %></td>
-          <td><button type="button" onclick="">수정</button></td>
-          <td><button type="button">삭제</button></td>
+          <td>
+            <button
+              type="button"
+              onclick="updateVisitor(this, '<%=data[i].id%>')"
+            >
+              수정
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="deleteVisitor(this, '<%= data[i].id %>')"
+            >
+              삭제
+            </button>
+          </td>
         </tr>
         <% } %>
       </tbody>
@@ -66,13 +80,36 @@
           <td>${res.data.name}</td>
           <td>${res.data.comment}</td>
           <td><button type="button" onclick="">수정</button></td>
-          <td><button type="button">삭제</button></td>
+          <td><button type="button" onclick="deleteVisitor(this, ${res.data.id})">삭제</button></td>
         </tr>`;
 
           // tbody.innerHTML += newVisitor;
           // insertAdjacentHTML() : 특정 요소에 html 추가
           tbody.insertAdjacentHTML("beforeend", newVisitor);
         });
+      }
+
+      function deleteVisitor(obj, id) {
+        console.log("obj", obj);
+        console.log("id", id);
+
+        if (confirm("정말로 삭제하시겠습니까?"))
+          axios({
+            method: "DELETE",
+            url: "/visitor/delete",
+            data: {
+              id: id,
+            },
+          }).then((res) => {
+            if (res.data.isDelete) {
+              obj.closest(`#tr_${res.data.id}`).remove();
+            }
+          });
+      }
+
+      function updateVisitor(obj, id) {
+        console.log(obj);
+        console.log(id);
       }
     </script>
   </body>

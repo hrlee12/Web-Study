@@ -23,3 +23,10 @@ exports.postVisitor = (req, res) => {
     // res.render("visitor", { data: result });
   });
 };
+
+exports.deleteVisitor = (req, res) => {
+  Visitor.deleteVisitor(req.body.id, (result) => {
+    console.log("Cvisitor.js >> ", result);
+    res.send({ isDelete: result, id: req.body.id });
+  });
+};

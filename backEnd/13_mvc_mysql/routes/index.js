@@ -5,4 +5,8 @@ const controller = require("../controller/Cvisitor");
 router.get("/", controller.main);
 router.get("/visitor", controller.getVisitors);
 router.post("/visitor/write", controller.postVisitor); // 데이터 하나 추가
+
+// DELETE /visitor/delete
+router.delete("/visitor/delete", controller.deleteVisitor);
+
 module.exports = router;
