@@ -5,6 +5,21 @@ exports.main = (req, res) => {
 };
 
 exports.getVisitors = (req, res) => {
-  console.log(Visitor.getVisitors());
-  res.render("visitor", { data: Visitor.getVisitors() });
+  // [before]
+  // console.log(Visitor.getVisitors());
+  // res.render("visitor", { data: Visitor.getVisitors() });
+
+  // [after] mySQL DB
+  Visitor.getVisitors((result) => {
+    console.log("Cvisitor.js >> ", result);
+    res.render("visitor", { data: result });
+  });
+};
+
+exports.postVisitor = (req, res) => {
+  Visitor.postVisitor(req.body, (result) => {
+    console.log("Cvisitor.js >> ", result);
+    res.send({ id: result, name: req.body.name, comment: req.body.comment });
+    // res.render("visitor", { data: result });
+  });
 };

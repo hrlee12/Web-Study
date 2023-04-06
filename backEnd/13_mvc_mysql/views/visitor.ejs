@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- axios를 불러오는 cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -14,7 +16,7 @@
         <br />
         <input type="text" name="comment" placeHolder="사용자 이름" />
         <div id="button-group">
-          <button type="button">등록</button>
+          <button type="button" onclick="createVisitor();">등록</button>
         </div>
       </fieldset>
     </form>
@@ -34,11 +36,44 @@
           <td><%= data[i].id %></td>
           <td><%= data[i].name %></td>
           <td><%= data[i].comment %></td>
-          <td><button type="button">수정</button></td>
+          <td><button type="button" onclick="">수정</button></td>
           <td><button type="button">삭제</button></td>
         </tr>
         <% } %>
       </tbody>
     </table>
+
+    <script>
+      const tbody = document.querySelector("tbody");
+      // 폼 [등록] 버튼 클릭시
+      // 테이블 데이터 추가
+      function createVisitor() {
+        const form = document.forms["visitor-form"];
+
+        axios({
+          method: "POST",
+          url: "/visitor/write",
+          data: {
+            name: form.name.value,
+            comment: form.comment.value,
+          },
+        }).then((res) => {
+          console.log(res.data);
+
+          const newVisitor = `
+          <tr id="tr_${res.data.id}">
+          <td>${res.data.id}</td>
+          <td>${res.data.name}</td>
+          <td>${res.data.comment}</td>
+          <td><button type="button" onclick="">수정</button></td>
+          <td><button type="button">삭제</button></td>
+        </tr>`;
+
+          // tbody.innerHTML += newVisitor;
+          // insertAdjacentHTML() : 특정 요소에 html 추가
+          tbody.insertAdjacentHTML("beforeend", newVisitor);
+        });
+      }
+    </script>
   </body>
 </html>

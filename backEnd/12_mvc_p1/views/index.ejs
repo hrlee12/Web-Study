@@ -65,10 +65,14 @@
             console.log(data);
             resultBox.textContent = `${data.userName}님! 로그인 성공😁`;
           } else if (data.existData) {
+            if (data.correctId) {
+              resultBox.textContent = "올바른 패스워드를 입력하세요😥";
+            } else {
+              resultBox.textContent = "존재하지 않는 아이디입니다😥";
+            }
             resultBox.classList.remove("success");
             resultBox.classList.remove("require-data");
             resultBox.classList.add("error");
-            resultBox.textContent = "아이디 또는 패스워드 오류😥";
           } else {
             resultBox.classList.remove("success");
             resultBox.classList.remove("error");
