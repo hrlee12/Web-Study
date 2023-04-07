@@ -30,3 +30,20 @@ exports.deleteVisitor = (req, res) => {
     res.send({ isDelete: result, id: req.body.id });
   });
 };
+
+exports.getVisitor = (req, res) => {
+  console.log("hi");
+  console.log(req.query);
+  Visitor.getVisitor(req.query.id, (result) => {
+    console.log("Cvisitor.js >> ", result); // model callback에서 넘겨주는 rows[0]
+    res.send(result);
+  });
+};
+
+exports.patchVisitor = (req, res) => {
+  console.log("patch req.body 확인", req.body);
+
+  Visitor.patchVisitor(req.body, () => {
+    res.send("수정 성공!");
+  });
+};

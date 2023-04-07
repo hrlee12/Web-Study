@@ -9,4 +9,10 @@ router.post("/visitor/write", controller.postVisitor); // 데이터 하나 추�
 // DELETE /visitor/delete
 router.delete("/visitor/delete", controller.deleteVisitor);
 
+// GET / visitor/get
+router.get("/visitor/get", controller.getVisitor); // 하나 조회
+
+// PATCH /visitor/edit
+router.patch("/visitor/edit", controller.patchVisitor); // 하나 수정
+
 module.exports = router;
