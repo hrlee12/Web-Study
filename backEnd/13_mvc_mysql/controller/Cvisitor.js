@@ -5,11 +5,6 @@ exports.main = (req, res) => {
 };
 
 exports.getVisitors = (req, res) => {
-  // [before]
-  // console.log(Visitor.getVisitors());
-  // res.render("visitor", { data: Visitor.getVisitors() });
-
-  // [after] mySQL DB
   Visitor.getVisitors((result) => {
     console.log("Cvisitor.js >> ", result);
     res.render("visitor", { data: result });
