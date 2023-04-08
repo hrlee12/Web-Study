@@ -120,12 +120,13 @@
         }).then((res) => {
           console.log(res.data);
 
+          alert(res.data);
+
+
           const children = document.querySelector(`#tr_${id}`).children;
           console.log(children);
           children[1].textContent = form.name.value;
           children[2].textContent = form.comment.value;
-
-          alert(res.data);
 
           editCancel();
         });
