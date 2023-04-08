@@ -11,9 +11,15 @@ router.post("/signup", Cuser.createUser);
 
 router.get("/signin", Cuser.showSignIn);
 
+router.post("/signin", Cuser.checkAccount);
+
+router.post("/profile", Cuser.showProfile);
+
+router.post("/profile/delete", Cuser.deleteAccount);
+
+router.post("/profile/edit", Cuser.editAccount);
 /*
 
-router.post('/user/signin', Cuser.checkSignIn);
 
 router.post('/user/profile', Cuser.successSignIN);
 router.

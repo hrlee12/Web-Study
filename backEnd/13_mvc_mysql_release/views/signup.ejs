@@ -33,10 +33,10 @@
             pw: form.pw.value,
             name: form.name.value,
           },
-        }).then((res) => {
-          if (res) {
-            document.location.href = "/user/signin";
-          }
+        }).then(() => {
+          alert("회원가입 성공!!");
+
+          document.location.href = "/user/signin";
         });
       }
     </script>
