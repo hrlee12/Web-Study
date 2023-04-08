@@ -51,7 +51,7 @@ exports.deleteVisitor = async (req, res) => {
   const result = await models.Visitor.destroy({
     where: { id: req.body.id },
   });
-  console.log("delete >>> ", result);
+  console.log(result);
   res.send({ isDelete: true, id: req.body.id });
 };
 
@@ -81,10 +81,6 @@ exports.patchVisitor = async (req, res) => {
   // });
 
   // [after]
-  console.log(req.body);
-  console.log(req.body.name);
-  console.log(req.body.comment);
-  console.log(req.body.id);
   const result = await models.Visitor.update(
     { name: req.body.name, comment: req.body.comment },
     {
@@ -93,7 +89,6 @@ exports.patchVisitor = async (req, res) => {
       },
     }
   );
-  console.log("update >> ", result);
-  console.log(result[0]);
+  // console.log("update >> ", result);
   res.send("수정완료 !");
 };
