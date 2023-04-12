@@ -3,8 +3,6 @@ const express = require("express");
 const router = express.Router();
 const Cuser = require("../controller/Cuser");
 
-router.get("/", Cuser.main);
-
 router.get("/signup", Cuser.showSignUp);
 
 router.post("/signup", Cuser.createUser);

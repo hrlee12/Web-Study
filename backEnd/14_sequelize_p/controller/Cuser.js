@@ -9,10 +9,6 @@
 // const User = require("../model/User");
 const models = require("../models");
 
-exports.main = (req, res) => {
-  res.render("index");
-};
-
 // 회원가입 페이지 렌더
 exports.showSignUp = (req, res) => {
   res.render("signup");
@@ -43,8 +39,9 @@ exports.showSignIn = (req, res) => {
   res.render("signin");
 };
 
-exports.checkAccount = (req, res) => {
+exports.checkAccount = async (req, res) => {
   console.log(req.body);
+  /*   [before]
   User.checkAccount(req.body, (result) => {
     console.log("컨트롤러 checkAccount >>> ", result);
 
@@ -55,31 +52,65 @@ exports.checkAccount = (req, res) => {
       res.send(false);
     }
   });
+ */
+  //[after];
+  const result = await models.User.findOne({
+    where: { userid: req.body.userid, pw: req.body.pw },
+  });
+  console.log("checkAccount >>> ", result);
+
+  // mysql로는 해당하는 튜플이 없으면 빈 리스트를 반환하지만
+  // suquelize는 해당하는 튜플이 없으면 null 반환. 있으면 오브젝트로 반환.
+  if (result) {
+    res.send(true);
+  } else {
+    res.send(false);
+  }
 };
 
-exports.showProfile = (req, res) => {
+exports.showProfile = async (req, res) => {
   console.log(req.body);
+  // [before]
+  // User.showProfile(req.body.userid, (result) => {
+  //   console.log("컨트롤러 showProfile >>> ", result); // [{}]
+  //   if (result.length > 0) {
+  //     res.render("profile", { data: result[0] });
+  //   }
+  // });
 
-  User.showProfile(req.body.userid, (result) => {
-    console.log("컨트롤러 showProfile >>> ", result); // [{}]
-    if (result.length > 0) {
-      res.render("profile", { data: result[0] });
-    }
+  // [after]
+  const result = await models.User.findOne({
+    where: { userid: req.body.userid },
   });
+  console.log("showProfile >>> ", result);
+  if (result) {
+    res.render("profile", { data: result });
+  }
 };
 
-exports.deleteAccount = (req, res) => {
+exports.deleteAccount = async (req, res) => {
   console.log(req.body);
+  // [before]
+  // User.deleteAccount(req.body.id, () => {
+  //   res.end();
+  // });
 
-  User.deleteAccount(req.body.id, () => {
-    res.end();
-  });
+  // [after]
+  await models.User.destroy({ where: { userid: req.body.id } });
+  res.end();
 };
 
 exports.editAccount = (req, res) => {
   console.log(req.body);
+  // [before]
+  // User.editAccount(req.body, () => {
+  //   res.end();
+  // });
 
-  User.editAccount(req.body, () => {
-    res.end();
-  });
+  // [after]
+  models.User.update(
+    { pw: req.body.pw, name: req.body.name },
+    { where: { id: req.body.id } }
+  );
+  res.end();
 };

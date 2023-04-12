@@ -55,9 +55,23 @@
       </fieldset>
       <br />
       <button type="submit">회원가입</button>
+      <button type="button" onclick="test()"></button>
     </form>
     <br />
     <br />
     <a href="/">홈으로 이동</a>
+    <script>
+      // function getCheckboxValue(event) {
+      //   let result = '';
+      //   if (event.target.checked)
+      // };
+
+      function test() {
+        const form = document.forms["practice1"];
+        console.log(form.interest);
+        console.dir(form.interest);
+        console.log(form.interest.value);
+      }
+    </script>
   </body>
 </html>
