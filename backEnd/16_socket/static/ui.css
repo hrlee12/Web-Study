@@ -1,0 +1,92 @@
+/* .chat-list {
+  background-color: skyblue;
+  height: 80vh;
+  width: 50%;
+  position: relative;
+}
+
+.my-chat {
+  text-align: right;
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
+.my-chat > span {
+  background-color: yellow;
+  border-radius: 10%;
+}
+
+.other-chat {
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 5px;
+}
+
+.other-chat > span {
+  background-color: white;
+  border-radius: 10%;
+}
+
+@media screen and (max-width: 428px) {
+  .chat-list {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .chat-list {
+    width: 100%;
+  }
+}
+ */
+
+body {
+  background-color: aliceblue;
+}
+
+/* [실습2] 채팅창 UI 만들기 */
+.chat-list {
+  background-color: skyblue;
+  width: 50%;
+  height: 70vh;
+  padding: 10px;
+  overflow-y: auto;
+  /* display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  align-content: flex-start; */
+}
+
+.chat-list div {
+  margin-top: 3px;
+  /* width: 100%; */
+}
+
+.chat-list div div {
+  display: inline-block;
+  padding: 3px;
+  /* margin: 3px; */
+}
+.my-chat {
+  text-align: right;
+}
+
+.my-chat div {
+  background-color: yellow;
+}
+
+.other-chat div {
+  background-color: white;
+}
+
+/* [실습3] */
+.notice {
+  text-align: center;
+  color: #005397;
+  font-size: 12px;
+  /* width: 100%; */
+}
+
+.d-none {
+  display: none;
+}

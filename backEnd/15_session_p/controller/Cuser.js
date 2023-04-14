@@ -64,7 +64,9 @@ exports.logout = (req, res) => {
     // 유저가 브라우저에서 /logout 경로로 직접 접근할 때
     res.send(`
   <script>
-  alert('잘못된 접근입니다);
+  alert('잘못된 접근입니다');
+  document.location.href = '/';
+
   </script>
   `);
   }
