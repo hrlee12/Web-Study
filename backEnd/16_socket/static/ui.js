@@ -34,6 +34,27 @@ socket.on("entrySuccess", (nick) => {
 
 // socket 사용을 위해서 객체 생성
 let socket = io.connect();
+let siofu = new SocketIOFileUpload(socket);
+// document.addEventListener(
+//   "DOMContentLoaded",
+//   function () {
+//     const file = document.querySelector("#uploadInput");
+//     console.log(file);
+//     siofu.listenOnInput(file);
+//     console.log(siofu);
+//     console.dir(siofu);
+//     siofu.addEventListener("complete", function (event) {
+//       console.log(event.success);
+
+//       console.log("-------------------------------");
+
+//       console.log(event.file);
+
+//       alert("파일명 : " + event.file.name);
+//     });
+//   },
+//   false
+// );
 
 // 나의 닉네임
 let myNick;
@@ -55,8 +76,27 @@ socket.on("notice", (msg) => {
 
 // [실습3-2]
 function entry() {
+  // const file = document.querySelector("#uploadInput");
+  // console.log(file);
+  // siofu.listenOnInput(file);
+  // console.log(siofu);
+  // console.dir(siofu);
+  // siofu.addEventListener("complete", function (event) {
+  //   console.log(event.success);
+
+  //   console.log("-------------------------------");
+
+  //   console.log(event.file);
+
+  //   alert("파일명 : " + event.file.name);
+  // });
+  const fileInput = document.querySelector("#fileInput");
+  console.log(fileInput.files);
   console.log(document.querySelector("#nickname").value);
-  socket.emit("setNick", document.querySelector("#nickname").value);
+  socket.emit("setNick", {
+    nick: document.querySelector("#nickname").value,
+    file: fileInput.files[0],
+  });
 }
 
 socket.on("entrySuccess", (nick) => {
@@ -82,6 +122,7 @@ socket.on("error", (msg) => {
 socket.on("updateNicks", (obj) => {
   let options = `<option value="all">전체</option>`;
   for (let key in obj) {
+    if (key == socket.id) continue;
     options += `<option value=${key}>${obj[key]}</option>`;
   }
 
@@ -95,6 +136,12 @@ socket.on("updateNicks", (obj) => {
 // 'send' 이벤트 전송 { 닉네임, 입력메세지 }
 function send() {
   console.log("send함수 실행");
+  if (document.querySelector("#message").value === "") {
+    document.querySelector("#prompt-div").style.display = "inline-block";
+    return;
+  }
+  document.querySelector("#prompt-div").style.display = "none";
+
   socket.emit("send", {
     myNick: myNick,
     msg: document.querySelector("#message").value,
@@ -106,8 +153,9 @@ function send() {
 }
 
 socket.on("newMessage", (obj) => {
-  console.log("소켓 newMessage 잘 받음", obj.nick, obj.msg);
-  let divChat = document.querySelector("div");
+  console.log("소켓 newMessage 잘 받음", obj.nick, obj.msg, obj.pic);
+  let divChat = document.createElement("div");
+  console.log(divChat);
 
   if (obj.dm) {
     divChat.classList.add("secret-chat");
@@ -120,15 +168,16 @@ socket.on("newMessage", (obj) => {
     whosMsg = "other-chat";
   }
 
+  divChat.textContent += `${obj.nick}: ${obj.msg}`;
+  divContainer = document.createElement("div");
+  divContainer.classList = whosMsg;
+  // divContainer.innerHTML = `<img class='pic' src='${obj.pic}' alt=''>`;
+  divContainer.append(divChat);
+
+  console.log(divContainer);
   console.log("클래스 이름", whosMsg);
   if (myNick) {
-    divChat.textContent += `${obj.nick}: ${obj.msg}`;
-
-    document.querySelector("#chat-list").insertAdjacentHTML(
-      // "afterbegin",
-      "beforeend",
-      `<div class="${whosMsg}">${divChat}</div>`
-    );
+    document.querySelector("#chat-list").append(divContainer);
   }
 
   const chatList = document.querySelector("#chat-list");
@@ -138,6 +187,9 @@ socket.on("newMessage", (obj) => {
   chatList.scrollTop = chatList.scrollHeight;
 });
 
+function enterkey() {
+  if (window.event.keyCode == 13) send();
+}
 /* 
         <div class="my-chat">
           <div>user1: msg1</div>

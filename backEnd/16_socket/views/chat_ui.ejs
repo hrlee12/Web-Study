@@ -40,7 +40,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- socketio-file-upload CDN -->
+    <script src="
+    https://cdn.jsdelivr.net/npm/socketio-file-upload@0.7.3/client.min.js
+    "></script>
     <!-- socket.io CDN -->
     <script
       src="https://cdn.socket.io/4.6.0/socket.io.min.js"
@@ -59,6 +62,9 @@
     <!-- [실습3-2] 채팅창 입장 안내 문구 socket.id -> nickname  -->
     <div class="entry-box">
       <input type="text" id="nickname" placeholder="Nickname" autofocus />
+      <br />
+      <input type="file" id="fileInput" />
+      <br />
       <button type="button" onclick="entry();">입장</button>
     </div>
 
@@ -75,8 +81,9 @@
       </div>
       <select id="nick-list"></select
       >에게
-      <input type="text" id="message" />
+      <input type="text" id="message" onkeyup="enterkey()" />
       <button type="button" onclick="send()">전송</button>
+      <div id="prompt-div">보낼 메세지의 내용을 입력하세요</div>
     </div>
 
     <!-- [실습1] 각 버튼을 누를때 마다 서버로 메세지 보내기 -->

@@ -79,6 +79,20 @@ body {
   background-color: white;
 }
 
+#prompt-div {
+  display: none;
+  opacity: 0.8;
+  font-size: 0.2rem;
+  position: relative;
+  left: 90px;
+}
+
+.pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 /* [실습3] */
 .notice {
   text-align: center;
