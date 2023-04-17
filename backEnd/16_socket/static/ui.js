@@ -1,60 +1,7 @@
-/*
-let socket = io.connect();
-let myNick;
-socket.on("connect", () => {
-  console.log("⭕Client Socket Connected >> ", socket.id);
-});
-
-const chatList = document.querySelector("#chat-list");
-console.log(chatList);
-
-// socket.emit("meSend", { msg: "hey" });
-// socket.on("meSendRes", (data) => {
-//   if (socket.id === data.socketID) {
-//     console.log("same");
-//   }
-// });
-
-socket.on("entrySuccess", (nick) => {
-  // 1. 내 닉네임 설정
-  myNick = nick;
-
-  // 2. 닉네임 입력창 & 버튼 비활성화
-  document.querySelector("#nickname").disabled = true; // 입력창 비활성화(클릭 막기)
-  document.querySelector(".entry-box > button").disabled = true;
-
-  // 3. div.chat-box 요소 보이기
-  document.querySelector(".chat-box").classList.remove("d-none");
-});
-
-
-*/
-
 // frontend js
 
 // socket 사용을 위해서 객체 생성
 let socket = io.connect();
-let siofu = new SocketIOFileUpload(socket);
-// document.addEventListener(
-//   "DOMContentLoaded",
-//   function () {
-//     const file = document.querySelector("#uploadInput");
-//     console.log(file);
-//     siofu.listenOnInput(file);
-//     console.log(siofu);
-//     console.dir(siofu);
-//     siofu.addEventListener("complete", function (event) {
-//       console.log(event.success);
-
-//       console.log("-------------------------------");
-
-//       console.log(event.file);
-
-//       alert("파일명 : " + event.file.name);
-//     });
-//   },
-//   false
-// );
 
 // 나의 닉네임
 let myNick;
@@ -76,26 +23,23 @@ socket.on("notice", (msg) => {
 
 // [실습3-2]
 function entry() {
-  // const file = document.querySelector("#uploadInput");
-  // console.log(file);
-  // siofu.listenOnInput(file);
-  // console.log(siofu);
-  // console.dir(siofu);
-  // siofu.addEventListener("complete", function (event) {
-  //   console.log(event.success);
-
-  //   console.log("-------------------------------");
-
-  //   console.log(event.file);
-
-  //   alert("파일명 : " + event.file.name);
-  // });
-  const fileInput = document.querySelector("#fileInput");
-  console.log(fileInput.files);
   console.log(document.querySelector("#nickname").value);
   socket.emit("setNick", {
     nick: document.querySelector("#nickname").value,
-    file: fileInput.files[0],
+  });
+
+  const formData = new FormData();
+  const file = document.querySelector("#profilePic");
+  formData.append("profilePic", file.files[0]);
+  console.log(formData);
+  console.dir(formData.profilePic);
+  axios({
+    method: "POST",
+    url: "/profilePic",
+    data: formData,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
   });
 }
 
@@ -153,7 +97,7 @@ function send() {
 }
 
 socket.on("newMessage", (obj) => {
-  console.log("소켓 newMessage 잘 받음", obj.nick, obj.msg, obj.pic);
+  console.log("소켓 newMessage 잘 받음", obj.nick, obj.msg);
   let divChat = document.createElement("div");
   console.log(divChat);
 
@@ -190,14 +134,3 @@ socket.on("newMessage", (obj) => {
 function enterkey() {
   if (window.event.keyCode == 13) send();
 }
-/* 
-        <div class="my-chat">
-          <div>user1: msg1</div>
-        </div>
-        <div class="other-chat">
-          <div>user2: msg2</div>
-        </div>
-
-              <input type="text" id="message" />
-
-*/
