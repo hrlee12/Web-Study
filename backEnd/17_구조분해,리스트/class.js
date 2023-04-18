@@ -28,9 +28,6 @@ navi.eat();
 class TV {
   // 갑자기 js의 문법이 바뀌는게 아니라
   // 개발자에게 알려주기 위한 것.
-  name = "";
-  price = 0;
-  size = 0;
 
   constructor(name, price, size) {
     this.name = name;
@@ -57,9 +54,6 @@ console.log(newTv1.getPrice());
 
 // 하위 클래스
 class Product {
-  name = "";
-  price = 0;
-
   constructor(name, price) {
     this.name = name;
     this.price = price;
@@ -74,7 +68,6 @@ class Product {
 // 자식은 부모의 것을 모두 사용할 수 있지만
 // 부모는 자식의 것 사용 못 함.
 class Laptop extends Product {
-  weight = "";
   constructor(name, price, weight) {
     // 상속받는 부모 클래스 값을 불러옴
     super(name, price);
