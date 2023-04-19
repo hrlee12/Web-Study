@@ -1,0 +1,14 @@
+.bestSeller {
+  background-color: blanchedalmond;
+  text-align: center;
+  width: 300px;
+  padding: 15px;
+}
+
+.bestSeller > h2 {
+  color: orange;
+}
+
+.bestSeller > div {
+  text-align: left;
+}
