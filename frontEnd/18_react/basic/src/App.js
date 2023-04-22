@@ -10,9 +10,9 @@ import FunctionComponent from "./FunctionComponent";
 function App() {
   return (
     <>
-      <ClassComponent name="홍길동" age="17" />
+      {/* <ClassComponent name="홍길동" age="17" />
       <ClassComponent name="성춘향" age="21" />
-      <ClassComponent />
+      <ClassComponent /> */}
       <FunctionComponent />
     </>
   );
