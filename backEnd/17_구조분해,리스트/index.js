@@ -85,3 +85,19 @@ const noTopingCookies = ["촉촉한 쿠키", "안촉촉한 쿠키"];
 const topingCookies = ["바나나쿠키", "블루베리쿠키", "딸기쿠키"];
 const allCookies = [...noTopingCookies, "초코칩 쿠키", ...topingCookies];
 console.log(allCookies);
+
+// reduce(callback))
+// 배열의 각 요소에 주어진 리듀서 함수를 실행하고, 하나의 결과값을 반환.
+const numbers = [1, 2, 3, 4, 5];
+
+// 1 + 2 + 3 + 4+ 5
+// 원소는 5개인데 itearation은 4번 돔.
+// 첫번째 iteration에 acc에 첫번째 요소를 넣고 시작함.
+// acc : 누적합
+const sum = numbers.reduce((acc, currentValue, idx) => {
+  console.log(`=======${idx}번째 index=======`);
+  console.log(`acc : ${acc}`);
+  console.log(`currentValue : ${currentValue}`);
+  return acc + currentValue;
+});
+console.log(sum); //15
