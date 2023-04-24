@@ -10,7 +10,7 @@ const LifeCyclePracChild = (props) => {
         <span className="id">No. {id}</span>
         <span className="title"> - {title}</span>
       </div>
-      <p className="body">{body}</p>
+      <p className="body">{body}...</p>
     </div>
   );
 };
