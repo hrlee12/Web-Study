@@ -1,0 +1,29 @@
+@include "./utils.scss";
+
+.PostItem {
+  text-align: center;
+  background-color: rgb(240, 247, 252);
+  box-shadow: 3px 3px 4px rgb(221, 221, 221);
+  border-radius: 5px;
+  margin: 25px 160px;
+  padding: 12px 25px;
+  text-align: left;
+
+  div {
+    font-size: 0.8rem;
+
+    .id {
+      color: rgb(83, 184, 224);
+    }
+
+    .title {
+      color: grey;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .PostItem {
+    margin: 25px 80px;
+  }
+}

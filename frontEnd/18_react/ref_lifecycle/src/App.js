@@ -6,7 +6,6 @@ import RefPractice from "./RefPractice";
 import LifeCycleFunc from "./LifeCycleFunc";
 import LifeCycleClass from "./LifeCycleClass";
 import LifeCyclePrac from "./LifeCyclePrac";
-
 function App() {
   return (
     <>
