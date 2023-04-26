@@ -1,0 +1,31 @@
+@import "./_utils.scss";
+
+.container {
+  display: flex;
+
+  .circle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    left: 0px;
+
+    &.circle1 {
+      background-color: pink;
+      top: $top-pink;
+      @include transform-mixin(pink-anim, $top-pink, 50px);
+    }
+
+    &.circle2 {
+      background-color: #ffff00;
+      top: $top-yellow;
+      @include transform-mixin(yellow-anim, $top-yellow, 100px);
+    }
+
+    &.circle3 {
+      background-color: green;
+      top: $top-green;
+      @include transform-mixin(green-anim, $top-green, 150px);
+    }
+  }
+}

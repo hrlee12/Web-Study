@@ -1,0 +1,69 @@
+// _utils.scss
+// 변수, mixin 들을 정의해놓는 파일
+// 파일명 앞에 _ 기호를 붙이는 이유 ?
+// : 변수, mixin만을 저장해놓을 파일이기 때문에
+// 별도의 표준 css로 변환(컴파일)될 필요가 없음
+// _를 붙이면 컴파일되지 않음
+// 성능/관리 측면에서 이득을 취할 수 있음.
+
+// 특징3. $ 변수 선언
+// COLOR 변수
+$color-red: red;
+$color-orange: orange;
+$color-yellow: yellow;
+$color-green: green;
+$color-blue: blue;
+$color-navy: navy;
+$color-purple: purple;
+// DURATION 변수
+$animation-duration: 0.4s;
+// BREAK POINT
+$breakpoint-tablet: 758px;
+
+// 특징4. mixin 사용 (=함수)
+// 믹스인을 정의할 때, @mixin 키워드
+// 믹스인을 사용할 때, @include 키워드
+@mixin box($size) {
+  width: $size;
+  height: $size;
+}
+
+// Larva 변수
+$width-larva: 100px;
+
+// 실습2
+$top-pink: 0px;
+$top-yellow: 30px;
+$top-green: 60px;
+@mixin transform-mixin($name, $top-position, $move-length) {
+  animation-name: $name;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  @keyframes #{$name} {
+    0% {
+      left: 0px;
+      top: $top-position;
+    }
+
+    25% {
+      left: $move-length;
+      top: $top-position;
+    }
+
+    50% {
+      left: $move-length;
+      top: $move-length + $top-position;
+    }
+
+    75% {
+      left: 0px;
+      top: $move-length + $top-position;
+    }
+
+    100% {
+      left: 0px;
+    }
+  }
+}

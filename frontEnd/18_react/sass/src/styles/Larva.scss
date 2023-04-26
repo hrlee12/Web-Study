@@ -1,0 +1,59 @@
+@import "./_utils.scss";
+
+.container {
+  display: flex;
+
+  .body {
+    width: $width-larva;
+    height: $width-larva;
+    border-radius: 50px;
+    position: absolute;
+    display: flex;
+
+    &.head {
+      background-color: blue;
+
+      .eyeball {
+        width: $width-larva / 3;
+        height: $width-larva / 3;
+        border-radius: 50px;
+        background-color: white;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+
+        .eyeblack {
+          width: $width-larva/6;
+          height: $width-larva/6;
+          border-radius: 50px;
+          background-color: black;
+          position: absolute;
+          top: 5px;
+        }
+      }
+    }
+
+    &.body1 {
+      background-color: rgb(118, 118, 255);
+      left: 70px;
+      top: 50px;
+    }
+    &.body2 {
+      background-color: rgb(44, 44, 182);
+      left: 110px;
+      top: 90px;
+    }
+    &.body3 {
+      background-color: rgb(123, 164, 252);
+      left: 160px;
+      top: 110px;
+    }
+    &.body4 {
+      background-color: rgb(82, 82, 161);
+      left: 220px;
+      top: 110px;
+    }
+  }
+}
+
+
