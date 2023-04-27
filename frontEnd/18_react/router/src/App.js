@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage.js";
 import Header from "./components/Header.js";
 import ProductPage from "./pages/ProductPage.js";
+import ProductDetailPage from "./pages/ProductDetailPage";
 import NotFound from "./pages/NotFound.js";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -30,7 +31,10 @@ function App() {
             path="/products"
             element={<ProductPage products={products} />}
           />
-          <Route path="/products/:productId" element={<ProductPage />} />
+          <Route
+            path="/products/:productId"
+            element={<ProductDetailPage products={products} />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
